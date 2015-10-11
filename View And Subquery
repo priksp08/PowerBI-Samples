@@ -1,0 +1,18 @@
+CREATE VIEW Soft AS
+
+SELECT SoftwareName,Version
+
+FROM Software
+Where (numberoflicences) >
+(
+SELECT AVG (numberoflicences)
+      
+FROM  SOFTWARE
+ )
+ 
+ORDER BY  numberoflicences DESC;
+
+
+
+
+SELECT * From  Soft;

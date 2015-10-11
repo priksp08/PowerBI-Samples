@@ -1,0 +1,18 @@
+USE data;
+
+CREATE PROCEDURE spEMPSALARY()
+
+
+SELECT FirstName,LastName,Salary
+FROM Employee
+
+INNER JOIN Employeepaymenthistory
+
+ON employee.employeeID=employeepaymenthistory.employee_employeeID
+
+Where Salary=3000
+
+ORDER BY firstName;
+
+
+CALL spEMPSALARY();

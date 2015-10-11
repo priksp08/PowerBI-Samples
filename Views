@@ -1,1 +1,19 @@
+CREATE VIEW Departmentdetails  AS
+
+SELECT Name,location,Founded,DepartmentName,ProjectName
+
+FROM Department 
+
+Inner Join Organization
+
+On Department.Organization_Id = Organization.Id
+
+Inner Join project
+
+ON department.Id = project.department_ID;
+
+
+
+
+SELECT * From Departmentdetails ;
 

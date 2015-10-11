@@ -1,0 +1,64 @@
+SELECT * from data.employee;
+
+USE data;
+
+CREATE TABLE Sala12 ( 
+   
+employee_employeeID int(11) NOT NULL, 
+Salary INT
+
+
+
+ 
+);
+
+SELECT * FROM Sala12
+
+
+DELIMITER $$
+
+
+CREATE TRIGGER 
+   acts_INSERT_min_salary
+
+BEFORE INSERT ON
+    EmployeePaymentHistory
+
+FOR EACH ROW
+    BEGIN
+        
+DECLARE msg VARCHAR(255);
+      
+  IF NEW.salary < 
+         
+   ( SELECT salary
+            
+  FROM  EmployeePaymentHistory
+             
+ WHERE employee_employeeID = NEW.employee_employeeID
+            
+)
+        
+THEN 
+            
+SET msg = 'Violation of Minimum Actor Salary.' ;
+            
+SIGNAL SQLSTATE '45000' SET message_text = msg ;
+       
+ END IF ;
+   
+ END ;
+
+
+$$
+DELIMITER ;
+
+DROP TRIGGER  
+acts_INSERT_min_salary;
+
+
+INSERT INTO EmployeePaymentHistory
+values (112,309,1000,9999-09-09);
+
+
+SELECT * FROM EmployeePaymentHistory

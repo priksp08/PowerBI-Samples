@@ -1,0 +1,11 @@
+CREATE VIEW SoftwaredetailReport  AS
+
+SELECT SoftwareName,Version
+
+FROM Software
+
+Where numberoflicences<200;
+
+
+
+SELECT * From SoftwaredetailReport  ;

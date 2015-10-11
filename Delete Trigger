@@ -1,0 +1,51 @@
+CREATE TABLE  deletedVendorAddress
+
+( 
+VendorID INT,
+
+Vendoraddress Varchar(45) NOT NULL,
+
+VendorCity Varchar(10) NOT NULL,
+
+VendorState Varchar(10) NOT NULL,
+
+VendorCountry Varchar(10) NOT NULL,
+
+changedon datetime DEFAULT NULL
+);
+
+USE DATA;
+
+Delimiter$$
+
+CREATE TRIGGER After_delete_Address_Details
+
+AFTER DELETE ON VendorAddress
+
+FOR EACH ROW
+
+BEGIN
+
+INSERT INTO deletedVendorAddress VALUES 
+
+(OLD.VendorID,
+
+OLD.VendorAddress,
+
+OLD.VendorCity,
+
+OLD.VendorState,
+OLD.Vendorcountry,NOW());
+END;
+
+$$
+
+DROP TRIGGER After_delete_Address_Details;
+
+DROP TABLE deletedVendorAddress
+
+DELETE FROM VendorAddress 
+WHERE VendorId=505;
+
+SELECT *FROM deletedVendorAddress
+SELECT * FROM  VendorAddress

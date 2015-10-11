@@ -1,0 +1,18 @@
+USE data;
+
+CREATE PROCEDURE spSHIFTOFEMPLY()
+
+
+SELECT Name, count(Employee_EmployeeID)
+
+FROM department_has_employee
+
+inner join shift
+On shift.Id= department_has_employee.shift_ID
+
+
+Group BY Name;
+
+
+
+CALL SHIFTOFEMPLY();

@@ -1,0 +1,51 @@
+SELECT * from data.employee;
+
+USE data;
+CREATE TABLE Proj ( 
+   
+ID int(11) NOT NULL,
+ 
+ProjectName varchar(50) NOT NULL,
+changedon datetime DEFAULT NULL, 
+
+    
+action varchar(50) DEFAULT NULL
+
+ 
+
+);
+
+SELECT * FROM Proj
+
+
+DELIMITER $$
+
+CREATE TRIGGER before_proj
+    
+BEFORE UPDATE ON Project
+    
+FOR EACH ROW BEGIN
+   
+ INSERT INTO proj
+    
+SET action = 'update',
+     
+ID = OLD.ID,
+   
+ ProjectName = OLD.ProjectName,
+changedon = NOW();      
+
+END$$
+
+DELIMITER ;
+
+
+UPDATE project
+
+SET ProjectName = 'bofa'
+
+WHERE ID = 305;
+
+SELECT * FROM Project
+
+SELECT * FROM proj

@@ -1,2 +1,2 @@
-# database-management
-This repository contains all my data related to my database design and database management project
+# PowerBI samples
+This repository contains all my work related to PowerBI
